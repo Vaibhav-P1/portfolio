@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vaibhav Pandey — Portfolio
 
-## Getting Started
+> Personal developer portfolio showcasing Android development skills, projects, and experience.
 
-First, run the development server:
+[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?logo=next.js)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)](https://typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com)
+
+## 🌐 Live Site
+
+> Deploy URL will appear here after hosting.
+
+## 📋 About
+
+A high-end, dark-themed personal portfolio built to showcase my work as an Android developer. Designed with a Material You-inspired aesthetic, featuring:
+
+- **Hero** — Typewriter role animation, stats, and CTA buttons
+- **About** — Background, skills summary, and personal intro
+- **Skills** — Visual proficiency bars across Android, Kotlin, and tooling
+- **Projects** — 4 Android/Java projects with direct GitHub repo links
+- **Experience** — VIT Bhopal Android Club membership
+- **Education** — B.Tech CSE at VIT Bhopal (CGPA 9.18)
+- **Contact** — Social links, Gmail compose integration, resume download
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| Icons | react-icons (fa, fa6, si) |
+| Bundler | Webpack (Turbopack disabled) |
+
+## 🚀 Getting Started
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── layout.tsx       # Root layout & metadata
+│   ├── page.tsx         # Page assembly
+│   └── globals.css      # Design tokens & global styles
+└── components/
+    ├── Navbar.tsx        # Fixed nav with social icons
+    ├── Hero.tsx          # Landing section with typewriter
+    ├── About.tsx         # About me section
+    ├── Skills.tsx        # Skills & proficiency section
+    ├── Projects.tsx      # Project showcase cards
+    ├── Experience.tsx    # Work & club experience
+    ├── Education.tsx     # Education history
+    └── Contact.tsx       # Contact form & social links
+```
 
-## Learn More
+## 🔗 Connect
 
-To learn more about Next.js, take a look at the following resources:
+- **GitHub** — [@Vaibhav-P1](https://github.com/Vaibhav-P1)
+- **LinkedIn** — [Vaibhav Pandey](https://www.linkedin.com/in/vaibhav-pandey-351308329)
+- **X (Twitter)** — [@VaibhavxDev](https://x.com/VaibhavxDev)
+- **LeetCode** — [@Leet_Pandey](https://leetcode.com/u/Leet_Pandey)
+- **Email** — pandeyvaibhavdev7505@gmail.com
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT — feel free to use this as inspiration for your own portfolio.
