@@ -19,12 +19,14 @@ export default function Education() {
             <div className="w-12 h-12 rounded-xl bg-[#3DDC84]/10 flex items-center justify-center shrink-0">
               <FaGraduationCap className="text-[#3DDC84] text-xl" />
             </div>
-            <div>
-              <h3 className="text-white font-bold text-xl">VIT Bhopal University</h3>
-              <p className="text-white/50 text-sm mt-0.5">Bhopal, Madhya Pradesh, India</p>
-            </div>
-            <div className="ml-auto shrink-0">
-              <span className="chip chip-green">2024 – Present</span>
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
+                <div>
+                  <h3 className="text-white font-bold text-xl">VIT Bhopal University</h3>
+                  <p className="text-white/50 text-sm mt-0.5">Bhopal, Madhya Pradesh, India</p>
+                </div>
+                <span className="chip chip-green shrink-0">2024 – Present</span>
+              </div>
             </div>
           </div>
 

@@ -138,18 +138,20 @@ export default function Skills() {
       </div>
 
       {/* DSA note */}
-      <div className="mt-10 glass-card rounded-2xl p-6 flex items-center gap-6 border-l-2 border-[#3DDC84]">
-        <div>
-          <p className="text-[#3DDC84] font-bold text-2xl">220+</p>
-          <p className="text-white/50 text-xs uppercase tracking-wider mt-1">DSA Problems</p>
-        </div>
-        <div className="w-px h-12 bg-white/10" />
-        <p className="text-white/60 text-sm leading-relaxed">
-          Solved 220+ data structures & algorithms problems across <span className="text-white font-medium">LeetCode</span>, <span className="text-white font-medium">Codeforces</span>, CodeChef & GeeksforGeeks. Strong foundation in arrays, trees, graphs, DP & sorting algorithms.
-        </p>
-        <div className="flex gap-2 ml-auto shrink-0">
-          <a href="https://leetcode.com/u/Leet_Pandey" target="_blank" rel="noreferrer" className="chip chip-green hidden sm:flex">LeetCode ↗</a>
-          <a href="https://codeforces.com/profile/Vaibhav_P1" target="_blank" rel="noreferrer" className="chip chip-purple hidden sm:flex">Codeforces ↗</a>
+      <div className="mt-10 glass-card rounded-2xl p-6 border-l-2 border-[#3DDC84]">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+          <div className="shrink-0">
+            <p className="text-[#3DDC84] font-bold text-2xl">220+</p>
+            <p className="text-white/50 text-xs uppercase tracking-wider mt-1">DSA Problems</p>
+          </div>
+          <div className="hidden sm:block w-px h-12 bg-white/10 shrink-0" />
+          <p className="text-white/60 text-sm leading-relaxed">
+            Solved 220+ data structures &amp; algorithms problems across <span className="text-white font-medium">LeetCode</span>, <span className="text-white font-medium">Codeforces</span>, CodeChef &amp; GeeksforGeeks. Strong foundation in arrays, trees, graphs, DP &amp; sorting algorithms.
+          </p>
+          <div className="flex gap-2 sm:ml-auto shrink-0">
+            <a href="https://leetcode.com/u/Leet_Pandey" target="_blank" rel="noreferrer" className="chip chip-green">LeetCode ↗</a>
+            <a href="https://codeforces.com/profile/Vaibhav_P1" target="_blank" rel="noreferrer" className="chip chip-purple">Codeforces ↗</a>
+          </div>
         </div>
       </div>
     </section>
