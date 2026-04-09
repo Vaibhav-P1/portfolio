@@ -57,13 +57,13 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Top label */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="flex items-center gap-2 chip chip-green">
+        <div className="flex items-center gap-3 mb-8 overflow-x-auto scrollbar-hide pb-1">
+          <div className="flex items-center gap-2 chip chip-green shrink-0">
             <span className="w-1.5 h-1.5 rounded-full bg-[#3DDC84] animate-pulse" />
             Available for Opportunities
           </div>
           {techBadges.map((b) => (
-            <div key={b.label} className="chip hidden sm:flex">
+            <div key={b.label} className="chip shrink-0 flex">
               {b.icon} {b.label}
             </div>
           ))}

@@ -64,11 +64,11 @@ export default function Contact() {
             href="https://mail.google.com/mail/?view=cm&to=pandeyvaibhavdev7505@gmail.com"
             target="_blank"
             rel="noreferrer"
-            className="group inline-flex items-center gap-3 px-6 py-4 rounded-2xl glass-card border border-white/10 hover:border-[#3DDC84]/40 hover:glow-green transition-all duration-300 text-white/80 hover:text-white font-medium text-sm"
+            className="group flex items-center gap-3 w-full min-w-0 px-6 py-4 rounded-2xl glass-card border border-white/10 hover:border-[#3DDC84]/40 hover:glow-green transition-all duration-300 text-white/80 hover:text-white font-medium text-sm"
           >
             <FaEnvelope className="text-[#3DDC84] shrink-0" size={18} />
-            <span>pandeyvaibhavdev7505@gmail.com</span>
-            <span className="ml-auto text-white/30 group-hover:text-[#3DDC84] transition-colors">→</span>
+            <span className="truncate">pandeyvaibhavdev7505@gmail.com</span>
+            <span className="ml-auto shrink-0 text-white/30 group-hover:text-[#3DDC84] transition-colors">→</span>
           </a>
 
           {/* Resume download */}

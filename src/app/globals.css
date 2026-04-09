@@ -179,4 +179,13 @@
   .animate-float    { animation: float 3s ease-in-out infinite; }
   .animate-blink    { animation: blink 1s step-end infinite; }
   .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+  /* Hide scrollbar for horizontal tag scroller */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
