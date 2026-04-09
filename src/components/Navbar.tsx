@@ -84,7 +84,7 @@ export default function Navbar() {
               <FaXTwitter />
             </a>
             <a
-              href="/VaibhavPandeyResume20March.pdf"
+              href="/VaibhavResumePublic.pdf"
               target="_blank"
               rel="noreferrer"
               className="ml-2 px-4 py-2 text-xs font-semibold tracking-wide rounded-lg border border-[#3DDC84]/50 text-[#3DDC84] hover:bg-[#3DDC84] hover:text-[#0a0a0a] transition-all duration-200"
@@ -126,7 +126,7 @@ export default function Navbar() {
           <a href="https://x.com/VaibhavxDev" target="_blank" rel="noreferrer" className="text-white/40 hover:text-white text-2xl" aria-label="X (Twitter)"><FaXTwitter /></a>
         </div>
         <a
-          href="/VaibhavPandeyResume20March.pdf"
+          href="/VaibhavResumePublic.pdf"
           target="_blank"
           rel="noreferrer"
           className="mt-2 px-6 py-3 text-sm font-semibold tracking-wide rounded-xl border border-[#3DDC84] text-[#3DDC84] hover:bg-[#3DDC84] hover:text-[#0a0a0a] transition-all duration-200"
