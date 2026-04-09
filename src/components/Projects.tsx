@@ -71,6 +71,25 @@ const projects: Project[] = [
   },
   {
     index: '04',
+    title: 'Rakshak — Women Safety App',
+    subtitle: 'AI-Powered Safety Platform',
+    description: 'An offline-first women safety app with one-tap SOS, voice trigger activation, GPS tracking, and Android 14 foreground service compliance — built for real emergencies.',
+    achievements: [
+      'One-tap SOS sending SMS + live location to emergency contacts instantly.',
+      'Voice trigger ("Help Rakshak") & volume key SOS via SpeechRecognizer & AccessibilityService.',
+      'Home screen widget for instant emergency access without unlocking the phone.',
+      'FusedLocationProviderClient for accurate GPS tracking with fallback handling.',
+      'Android 14 foreground service compliance for reliable background execution.',
+    ],
+    tags: ['Kotlin', 'Jetpack Compose', 'SpeechRecognizer', 'FusedLocation', 'AccessibilityService'],
+    status: 'Completed',
+    statusColor: 'chip-green',
+    placeholderText: 'SOS_ACTIVE',
+    placeholderGlow: 'from-red-900/25',
+    githubUrl: 'https://github.com/Vaibhav-P1/Rakshak-AI',
+  },
+  {
+    index: '05',
     title: 'Campus Course Record Manager',
     subtitle: 'CLI Academic System',
     description: 'A high-throughput CLI academic management system handling student records, course catalog, enrollment, grading and GPA computation using Java and MySQL.',
@@ -150,8 +169,10 @@ export default function Projects() {
       <div className="space-y-24">
         {projects.map((p, i) => (
           <div key={p.index} className="relative group">
-            {/* Large background number */}
-            <div className="absolute -left-4 -top-10 text-[10rem] font-black text-white/[0.025] leading-none pointer-events-none select-none group-hover:text-white/[0.04] transition-all duration-700">
+            {/* Large background number — sits behind the phone mockup, opposite to text */}
+            <div className={`hidden lg:block absolute -top-10 text-[10rem] font-black text-white/[0.025] leading-none pointer-events-none select-none group-hover:text-white/[0.04] transition-all duration-700 ${
+              i % 2 !== 0 ? '-left-4' : 'right-0'
+            }`}>
               {p.index}
             </div>
 

@@ -115,7 +115,7 @@ export default function Hero() {
         {/* Stats row */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/[0.06] rounded-2xl overflow-hidden">
           {[
-            { value: '4', label: 'Android Projects', sub: 'shipped' },
+            { value: '5', label: 'Android Projects', sub: 'shipped' },
             { value: '220+', label: 'DSA Problems', sub: 'LeetCode & CF' },
             { value: '9.18', label: 'CGPA', sub: 'VIT Bhopal' },
             { value: 'Top 20', label: 'Hackathon Rank', sub: 'Dawn of Code' },
