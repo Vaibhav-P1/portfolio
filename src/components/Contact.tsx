@@ -74,7 +74,7 @@ export default function Contact() {
           {/* Resume download */}
           <div className="mt-6">
             <a
-              href="/VaibhavResumePublic.pdf"
+              href="/ResumeVaibhavPandeyMay.pdf"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#3DDC84] text-[#0a0a0a] font-semibold rounded-xl text-sm hover:bg-[#2fc974] transition-all duration-200 hover:scale-[1.02] active:scale-100"
