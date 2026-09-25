@@ -1,7 +1,5 @@
 import React from 'react';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import { SiKotlin, SiFirebase, SiAndroid } from 'react-icons/si';
-import { FaDatabase } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 
 type Project = {
   index: string;
@@ -20,7 +18,76 @@ type Project = {
 const projects: Project[] = [
   {
     index: '01',
-    title: 'Chatroom App',
+    title: 'Zenith — Focus & Productivity App',
+    subtitle: 'Focus Tracker & Analytics (2026)',
+    description: 'A dark-themed focus tracker built with Clean Architecture, Jetpack Compose, and Hilt, featuring 3-tab productivity analytics and real-time leaderboards.',
+    achievements: [
+      'Built a dark-themed focus tracker using Clean Architecture (MVVM), Jetpack Compose, Hilt, and StateFlow.',
+      'Implemented Room Database with schema migrations and DataStore to generate 3-tab productivity analytics (Daily/Weekly/Monthly) and GitHub-style activity heatmaps.',
+      'Added Canvas animations, Focus Mode, Foreground Services, and real-time Firebase Firestore leaderboards.',
+    ],
+    tags: ['Kotlin', 'Jetpack Compose', 'Room DB', 'Hilt', 'Firebase', 'DataStore'],
+    status: 'Completed',
+    statusColor: 'chip-green',
+    placeholderText: 'FOCUS_SESSION_ACTIVE',
+    placeholderGlow: 'from-emerald-900/25',
+    githubUrl: 'https://github.com/Vaibhav-P1/Zenith',
+  },
+  {
+    index: '02',
+    title: 'Shop – E-Com App',
+    subtitle: 'Native Android E-Commerce (2026)',
+    description: 'A complete native Android e-commerce application with seamless authentication, real-time Firestore synchronization, and Razorpay payment processing.',
+    achievements: [
+      'Developed a native Android e-commerce app with authentication, product catalog, cart, and wishlist.',
+      'Implemented Firebase Firestore for real-time synchronization and SharedPreferences for offline persistence.',
+      'Integrated Razorpay Payment Gateway using MVVM, Jetpack Compose, and Kotlin Coroutines.',
+    ],
+    tags: ['Kotlin', 'Jetpack Compose', 'MVVM', 'Firebase', 'Razorpay', 'Coroutines'],
+    status: 'Completed',
+    statusColor: 'chip-green',
+    placeholderText: 'PAYMENT_GATEWAY_READY',
+    placeholderGlow: 'from-purple-900/25',
+    githubUrl: 'https://github.com/Vaibhav-P1/Shopp---An-Ecom-App',
+  },
+  {
+    index: '03',
+    title: 'Rakshak — Women Safety App',
+    subtitle: 'Offline-First Safety Platform (2026)',
+    description: 'An offline-first women safety app with one-tap SOS, voice trigger activation, GPS tracking, and Android 14 foreground service compliance — built for real emergencies.',
+    achievements: [
+      'Built an offline-first safety app with one-tap SOS sending SMS + live location.',
+      'Implemented voice trigger ("Help Rakshak") and volume key SOS using SpeechRecognizer & AccessibilityService.',
+      'Designed home screen widget for instant emergency access without unlocking the phone.',
+      'Integrated FusedLocationProviderClient for accurate GPS tracking with fallback handling and Android 14 foreground service compliance.',
+    ],
+    tags: ['Kotlin', 'Jetpack Compose', 'SpeechRecognizer', 'FusedLocation', 'AccessibilityService'],
+    status: 'Completed',
+    statusColor: 'chip-green',
+    placeholderText: 'SOS_ACTIVE',
+    placeholderGlow: 'from-red-900/25',
+    githubUrl: 'https://github.com/Vaibhav-P1/Rakshak-AI',
+  },
+  {
+    index: '04',
+    title: 'Weather App',
+    subtitle: 'Live Meteorological Data (2025)',
+    description: 'A dynamic weather application fetching live atmospheric data via OpenWeather API, featuring location-based queries, dynamic UI updates, and offline caching.',
+    achievements: [
+      'Integrated REST APIs (OpenWeather API) using Retrofit to fetch live weather data.',
+      'Implemented location-based search and dynamic UI updates.',
+      'Added error handling and offline caching for reliable user experience in poor connectivity.',
+    ],
+    tags: ['Kotlin', 'Jetpack Compose', 'Retrofit', 'REST API', 'OpenWeather'],
+    status: 'Completed',
+    statusColor: 'chip-green',
+    placeholderText: 'WEATHER_STREAM_ACTIVE',
+    placeholderGlow: 'from-blue-900/25',
+    githubUrl: 'https://github.com/Vaibhav-P1/WeatherApp',
+  },
+  {
+    index: '05',
+    title: 'Whisp — Chatroom App',
     subtitle: 'Real-Time Messaging',
     description: 'A production-grade real-time messaging application with secure email/password authentication, synchronous chat, and a clean Compose-first UI.',
     achievements: [
@@ -34,76 +101,6 @@ const projects: Project[] = [
     placeholderText: 'FIREBASE_CONNECTED',
     placeholderGlow: 'from-orange-900/25',
     githubUrl: 'https://github.com/Vaibhav-P1/Whisp-Chatroom',
-  },
-  {
-    index: '02',
-    title: 'Weather App',
-    subtitle: 'Live Meteorological Data',
-    description: 'A dynamic weather application fetching live atmospheric data via OpenWeather API, featuring location-based queries, dynamic UI updates, and offline caching.',
-    achievements: [
-      'Integrated REST APIs using Retrofit with clean network layer abstraction.',
-      'Location-based weather search with dynamic background UI updates.',
-      'Offline caching & error handling for reliable UX in poor connectivity.',
-    ],
-    tags: ['Kotlin', 'Jetpack Compose', 'Retrofit', 'REST API', 'OpenWeather'],
-    status: 'Completed',
-    statusColor: 'chip-green',
-    placeholderText: 'WEATHER_STREAM_ACTIVE',
-    placeholderGlow: 'from-blue-900/25',
-    githubUrl: 'https://github.com/Vaibhav-P1/WeatherApp',
-  },
-  {
-    index: '03',
-    title: 'Task Reminder App',
-    subtitle: 'Offline-First Task Manager',
-    description: 'A sophisticated MVVM-architected task management platform with full add/edit/delete lifecycles, local Room DB persistence, and async Coroutine operations.',
-    achievements: [
-      'Full MVVM architecture with ViewModel & LiveData separation.',
-      'Room Database with offline-first local persistence.',
-      'Kotlin Coroutines for smooth, non-blocking async operations.',
-    ],
-    tags: ['Kotlin', 'MVVM', 'Room DB', 'Coroutines', 'Jetpack Compose'],
-    status: 'Completed',
-    statusColor: 'chip-green',
-    placeholderText: 'LOCAL_PERSISTENCE',
-    placeholderGlow: 'from-amber-900/25',
-    githubUrl: 'https://github.com/Vaibhav-P1/TaskReminder',
-  },
-  {
-    index: '04',
-    title: 'Rakshak — Women Safety App',
-    subtitle: 'AI-Powered Safety Platform',
-    description: 'An offline-first women safety app with one-tap SOS, voice trigger activation, GPS tracking, and Android 14 foreground service compliance — built for real emergencies.',
-    achievements: [
-      'One-tap SOS sending SMS + live location to emergency contacts instantly.',
-      'Voice trigger ("Help Rakshak") & volume key SOS via SpeechRecognizer & AccessibilityService.',
-      'Home screen widget for instant emergency access without unlocking the phone.',
-      'FusedLocationProviderClient for accurate GPS tracking with fallback handling.',
-      'Android 14 foreground service compliance for reliable background execution.',
-    ],
-    tags: ['Kotlin', 'Jetpack Compose', 'SpeechRecognizer', 'FusedLocation', 'AccessibilityService'],
-    status: 'Completed',
-    statusColor: 'chip-green',
-    placeholderText: 'SOS_ACTIVE',
-    placeholderGlow: 'from-red-900/25',
-    githubUrl: 'https://github.com/Vaibhav-P1/Rakshak-AI',
-  },
-  {
-    index: '05',
-    title: 'Campus Course Record Manager',
-    subtitle: 'CLI Academic System',
-    description: 'A high-throughput CLI academic management system handling student records, course catalog, enrollment, grading and GPA computation using Java and MySQL.',
-    achievements: [
-      'CRUD operations for student, course, and enrollment management.',
-      'GPA calculation engine with relational database queries.',
-      'Enrollment tracking and grade management via normalized MySQL schema.',
-    ],
-    tags: ['Java', 'MySQL', 'CLI', 'JDBC', 'DBMS'],
-    status: 'Archived',
-    statusColor: 'chip',
-    placeholderText: 'CLI_MANAGER_ONLINE',
-    placeholderGlow: 'from-cyan-900/25',
-    githubUrl: 'https://github.com/Vaibhav-P1/CCRM-Vb',
   },
 ];
 
@@ -158,7 +155,7 @@ export default function Projects() {
       <div className="mb-16">
         <p className="text-[#3DDC84] text-xs font-semibold tracking-[0.3em] uppercase mb-4">/ Projects</p>
         <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight">
-          Things I've{' '}
+          Things I&apos;ve{' '}
           <span className="gradient-text">shipped.</span>
         </h2>
         <p className="text-white/50 mt-4 max-w-xl text-base leading-relaxed">

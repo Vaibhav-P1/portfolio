@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaCode } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { SiLeetcode, SiCodeforces } from 'react-icons/si';
 
@@ -36,7 +36,7 @@ const socials = [
     label: 'Codeforces',
     handle: '@Vaibhav_P1',
     href: 'https://codeforces.com/profile/Vaibhav_P1',
-    icon: <FaCode size={20} />,
+    icon: <SiCodeforces size={20} />,
     color: 'hover:border-[#3DDC84]/50 hover:text-[#3DDC84]',
   },
 ];
@@ -52,11 +52,11 @@ export default function Contact() {
         <div>
           <p className="text-[#3DDC84] text-xs font-semibold tracking-[0.3em] uppercase mb-4">/ Get In Touch</p>
           <h2 className="text-4xl md:text-6xl font-black text-white leading-tight tracking-tighter mb-6">
-            Let's build{' '}
+            Let&apos;s build{' '}
             <span className="gradient-text">together.</span>
           </h2>
           <p className="text-white/50 text-base md:text-lg leading-relaxed mb-8">
-            I'm actively looking for internship and junior Android developer opportunities. Whether you have a project, a role, or just want to talk tech — my inbox is always open.
+            I&apos;m actively looking for internship and junior Android developer opportunities. Whether you have a project, a role, or just want to talk tech — my inbox is always open.
           </p>
 
           {/* Email CTA */}
@@ -74,7 +74,7 @@ export default function Contact() {
           {/* Resume download */}
           <div className="mt-6">
             <a
-              href="/ResumeVaibhavPandeyMay.pdf"
+              href="/Resume_VaibhavPandeyAD.pdf"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#3DDC84] text-[#0a0a0a] font-semibold rounded-xl text-sm hover:bg-[#2fc974] transition-all duration-200 hover:scale-[1.02] active:scale-100"

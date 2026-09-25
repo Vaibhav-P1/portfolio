@@ -1,10 +1,10 @@
 import React from 'react';
-import { FaCode, FaMobile, FaDatabase, FaBrain } from 'react-icons/fa';
+import { FaDatabase, FaBrain } from 'react-icons/fa';
 import { SiKotlin, SiAndroid } from 'react-icons/si';
 
 const stats = [
-  { value: '9.18', label: 'CGPA at VIT Bhopal', color: 'text-[#3DDC84]' },
-  { value: '220+', label: 'DSA Problems Solved', color: 'text-[#9d95ff]' },
+  { value: '9.32', label: 'CGPA at VIT Bhopal', color: 'text-[#3DDC84]' },
+  { value: '300+', label: 'DSA Problems Solved', color: 'text-[#9d95ff]' },
   { value: 'Top 20', label: 'Dawn of Code Hackathon', color: 'text-[#3DDC84]' },
   { value: 'SIH', label: 'Smart India Hackathon', color: 'text-[#9d95ff]' },
 ];
@@ -29,10 +29,10 @@ export default function About() {
             <span className="gradient-text">actually matter.</span>
           </h2>
           <p className="text-white/60 text-base md:text-lg leading-relaxed mb-6">
-            I'm <span className="text-white font-medium">Vaibhav Pandey</span>, an Android Developer studying B.Tech in CSE at <span className="text-white font-medium">VIT Bhopal University</span> (CGPA: 9.18/10).
+            I&apos;m <span className="text-white font-medium">Vaibhav Pandey</span>, an Android Developer studying B.Tech in CSE at <span className="text-white font-medium">VIT Bhopal University</span> (CGPA: 9.32/10).
           </p>
           <p className="text-white/50 text-base leading-relaxed mb-10">
-            I specialize in building high-quality Android applications with Kotlin and Jetpack Compose, focusing on clean architecture, real-time data, and offline-first performance. I'm driven by the challenge of turning complex problems into seamless mobile experiences that users love.
+            I specialize in building high-quality Android applications with Kotlin and Jetpack Compose, focusing on clean architecture, real-time data, and offline-first performance. I&apos;m driven by the challenge of turning complex problems into seamless mobile experiences that users love.
           </p>
 
           {/* Highlights */}

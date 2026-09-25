@@ -36,7 +36,7 @@ export default function Education() {
               <p className="text-white/50 text-sm mt-1">November 2024 – Present</p>
             </div>
             <div className="glass-card rounded-xl p-4 text-center">
-              <p className="text-3xl font-black text-[#3DDC84]">9.18</p>
+              <p className="text-3xl font-black text-[#3DDC84]">9.32</p>
               <p className="text-white/50 text-xs uppercase tracking-wider mt-1">CGPA / 10.0</p>
             </div>
           </div>
@@ -94,8 +94,8 @@ export default function Education() {
             },
             {
               icon: <FaCode className="text-[#9d95ff]" />,
-              title: '220+ DSA Problems',
-              desc: 'Solved on LeetCode, Codeforces, CodeChef, and GeeksforGeeks combined.',
+              title: '300+ DSA Problems',
+              desc: 'Solved over 300+ problems combined across LeetCode, Codeforces, CodeChef, and GeeksforGeeks.',
               color: 'border-[#9d95ff]/20',
             },
           ].map((a, i) => (
