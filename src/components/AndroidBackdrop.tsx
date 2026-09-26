@@ -1,5 +1,6 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 // Journey waypoints along scroll progress (0.0 = Hero, 1.0 = Contact/Footer)
 interface Waypoint {
@@ -23,78 +24,78 @@ const WAYPOINTS: Waypoint[] = [
     progress: 0.0,
     xPctDesktop: 0.72,
     yPctDesktop: 0.16,
-    scaleDesktop: 1.08,
-    opacityDesktop: 0.30,
+    scaleDesktop: 1.05,
+    opacityDesktop: 0.32,
     rotDesktop: 0,
     xPctMobile: 0.62,
     yPctMobile: 0.14,
     scaleMobile: 0.72,
-    opacityMobile: 0.18,
+    opacityMobile: 0.20,
     rotMobile: 0,
   },
   // 2. ABOUT — Drifts gracefully alongside about narrative & stats
   {
-    progress: 0.18,
+    progress: 0.16,
     xPctDesktop: 0.80,
-    yPctDesktop: 0.30,
+    yPctDesktop: 0.28,
     scaleDesktop: 0.88,
-    opacityDesktop: 0.25,
-    rotDesktop: -4,
+    opacityDesktop: 0.26,
+    rotDesktop: -3,
     xPctMobile: 0.68,
     yPctMobile: 0.25,
     scaleMobile: 0.68,
-    opacityMobile: 0.16,
+    opacityMobile: 0.18,
     rotMobile: -2,
   },
   // 3. SKILLS — Shifts to left-center gutter, peering into technical stack
   {
-    progress: 0.36,
+    progress: 0.32,
     xPctDesktop: 0.16,
-    yPctDesktop: 0.36,
+    yPctDesktop: 0.34,
     scaleDesktop: 0.84,
-    opacityDesktop: 0.23,
-    rotDesktop: 5,
+    opacityDesktop: 0.24,
+    rotDesktop: 4,
     xPctMobile: 0.60,
-    yPctMobile: 0.32,
+    yPctMobile: 0.30,
     scaleMobile: 0.66,
-    opacityMobile: 0.15,
-    rotMobile: 3,
+    opacityMobile: 0.16,
+    rotMobile: 2,
   },
-  // 4. PROJECTS START (Zenith/Shop) — Weaves to the right side of the layout
+  // 4. PROJECTS — Weaves to the right side of the project cards
   {
-    progress: 0.52,
+    progress: 0.48,
     xPctDesktop: 0.82,
-    yPctDesktop: 0.40,
-    scaleDesktop: 0.90,
-    opacityDesktop: 0.27,
-    rotDesktop: -5,
+    yPctDesktop: 0.38,
+    scaleDesktop: 0.88,
+    opacityDesktop: 0.28,
+    rotDesktop: -4,
     xPctMobile: 0.68,
-    yPctMobile: 0.38,
+    yPctMobile: 0.36,
     scaleMobile: 0.68,
-    opacityMobile: 0.17,
+    opacityMobile: 0.18,
     rotMobile: -3,
   },
-  // 5. PROJECTS MID (Rakshak/Weather) — Weaves across to the left
+  // 5. SOUNDTRACK / MUSIC — Center-right presence alongside the music stage
   {
-    progress: 0.66,
-    xPctDesktop: 0.18,
-    yPctDesktop: 0.44,
-    scaleDesktop: 0.90,
-    opacityDesktop: 0.26,
-    rotDesktop: 6,
-    xPctMobile: 0.58,
-    yPctMobile: 0.42,
-    scaleMobile: 0.68,
-    opacityMobile: 0.16,
-    rotMobile: 4,
+    progress: 0.62,
+    xPctDesktop: 0.78,
+    yPctDesktop: 0.32,
+    scaleDesktop: 0.92,
+    opacityDesktop: 0.28,
+    rotDesktop: 3,
+    xPctMobile: 0.64,
+    yPctMobile: 0.32,
+    scaleMobile: 0.70,
+    opacityMobile: 0.18,
+    rotMobile: 2,
   },
   // 6. EXPERIENCE — Right side, complementing the left-aligned timeline
   {
-    progress: 0.80,
+    progress: 0.76,
     xPctDesktop: 0.82,
-    yPctDesktop: 0.34,
+    yPctDesktop: 0.36,
     scaleDesktop: 0.88,
-    opacityDesktop: 0.25,
+    opacityDesktop: 0.26,
     rotDesktop: -3,
     xPctMobile: 0.68,
     yPctMobile: 0.35,
@@ -104,7 +105,7 @@ const WAYPOINTS: Waypoint[] = [
   },
   // 7. EDUCATION — Subtle balance across academic milestones
   {
-    progress: 0.90,
+    progress: 0.88,
     xPctDesktop: 0.76,
     yPctDesktop: 0.38,
     scaleDesktop: 0.88,
@@ -120,14 +121,14 @@ const WAYPOINTS: Waypoint[] = [
   {
     progress: 1.0,
     xPctDesktop: 0.72,
-    yPctDesktop: 0.24,
-    scaleDesktop: 1.04,
+    yPctDesktop: 0.22,
+    scaleDesktop: 1.02,
     opacityDesktop: 0.32,
     rotDesktop: 0,
     xPctMobile: 0.62,
-    yPctMobile: 0.22,
+    yPctMobile: 0.20,
     scaleMobile: 0.72,
-    opacityMobile: 0.19,
+    opacityMobile: 0.20,
     rotMobile: 0,
   },
 ];
@@ -184,13 +185,19 @@ function interpolateWaypoints(p: number, isMobile: boolean) {
 export default function AndroidBackdrop() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mascotWrapperRef = useRef<HTMLDivElement>(null);
-  const headRef = useRef<SVGGElement>(null);
-  const leftArmRef = useRef<SVGGElement>(null);
-  const rightArmRef = useRef<SVGGElement>(null);
-  const leftLegRef = useRef<SVGGElement>(null);
-  const rightLegRef = useRef<SVGGElement>(null);
+  const [isDancing, setIsDancing] = useState(false);
+  const isDancingRef = useRef(false);
 
   useEffect(() => {
+    // Listen for groove mode dance toggle
+    const handleDanceToggle = (e: Event) => {
+      const customEvent = e as CustomEvent<{ isDancing: boolean }>;
+      const dancing = Boolean(customEvent.detail?.isDancing);
+      setIsDancing(dancing);
+      isDancingRef.current = dancing;
+    };
+    window.addEventListener('mascot-dance-toggle', handleDanceToggle);
+
     // Detect reduced motion preference
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     let prefersReducedMotion = mediaQuery.matches;
@@ -199,9 +206,6 @@ export default function AndroidBackdrop() {
       prefersReducedMotion = e.matches;
       if (prefersReducedMotion && mascotWrapperRef.current) {
         mascotWrapperRef.current.style.transform = `translate3d(${window.innerWidth * 0.72}px, ${window.innerHeight * 0.2}px, 0) rotate(0deg) scale(1)`;
-        if (leftArmRef.current) leftArmRef.current.style.transform = 'none';
-        if (rightArmRef.current) rightArmRef.current.style.transform = 'none';
-        if (headRef.current) headRef.current.style.transform = 'none';
       }
     };
     mediaQuery.addEventListener('change', handleMotionChange);
@@ -270,8 +274,8 @@ export default function AndroidBackdrop() {
           const currentWaypoint = interpolateWaypoints(currentScrollProgress, isMobile);
 
           // Approximate rendered size for boundary clamping
-          const baseMascotWidth = isMobile ? 220 : 360;
-          const baseMascotHeight = isMobile ? 260 : 420;
+          const baseMascotWidth = isMobile ? 180 : 300;
+          const baseMascotHeight = isMobile ? 220 : 380;
           const renderedWidth = baseMascotWidth * currentWaypoint.scale;
           const renderedHeight = baseMascotHeight * currentWaypoint.scale;
 
@@ -280,12 +284,14 @@ export default function AndroidBackdrop() {
           const rawY = currentWaypoint.yPct * vh;
 
           // Add subtle mouse parallax (desktop only)
-          const mouseOffsetX = isMobile ? 0 : currentMouseX * 36;
-          const mouseOffsetY = isMobile ? 0 : currentMouseY * 18;
+          const mouseOffsetX = isMobile ? 0 : currentMouseX * 32;
+          const mouseOffsetY = isMobile ? 0 : currentMouseY * 16;
 
-          // Playful continuous harmonics (ambient bounce)
-          const ambientBounce = Math.sin(elapsed * 2.2 + currentScrollProgress * 8) * (isMobile ? 5 : 9);
-          const dynamicTilt = currentWaypoint.rot + (isMobile ? 0 : currentMouseX * 3.5) + Math.sin(elapsed * 1.6) * 2;
+          // Playful continuous harmonics (ambient bounce) + lively groove dance
+          const danceBounce = isDancingRef.current ? Math.sin(elapsed * 7) * (isMobile ? 8 : 14) : 0;
+          const danceTilt = isDancingRef.current ? Math.sin(elapsed * 3.5) * 4 : 0;
+          const ambientBounce = (Math.sin(elapsed * 2.2 + currentScrollProgress * 8) * (isMobile ? 5 : 8)) + danceBounce;
+          const dynamicTilt = currentWaypoint.rot + (isMobile ? 0 : currentMouseX * 3) + Math.sin(elapsed * 1.5) * 2 + danceTilt;
 
           // CRITICAL: Strictly clamp coordinates so the mascot NEVER leaves the viewport!
           const minX = 16;
@@ -299,28 +305,6 @@ export default function AndroidBackdrop() {
           // Apply hardware-accelerated transform directly (0 React re-renders)
           mascotWrapperRef.current.style.transform = `translate3d(${finalX.toFixed(1)}px, ${finalY.toFixed(1)}px, 0) rotate(${dynamicTilt.toFixed(2)}deg) scale(${currentWaypoint.scale.toFixed(3)})`;
           mascotWrapperRef.current.style.opacity = currentWaypoint.opacity.toFixed(3);
-
-          // Limb animations (playful subtle waving and steps)
-          if (leftArmRef.current) {
-            const leftArmAngle = Math.sin(elapsed * 2.6 + currentScrollProgress * 10) * 11 - 2;
-            leftArmRef.current.style.transform = `rotate(${leftArmAngle.toFixed(2)}deg)`;
-          }
-
-          if (rightArmRef.current) {
-            const rightArmAngle = Math.cos(elapsed * 2.6 + currentScrollProgress * 10) * 15 + 6;
-            rightArmRef.current.style.transform = `rotate(${rightArmAngle.toFixed(2)}deg)`;
-          }
-
-          if (headRef.current) {
-            const headTilt = Math.sin(elapsed * 1.8) * 3;
-            headRef.current.style.transform = `rotate(${headTilt.toFixed(2)}deg)`;
-          }
-
-          if (leftLegRef.current && rightLegRef.current) {
-            const legSway = Math.sin(elapsed * 2.2) * 4;
-            leftLegRef.current.style.transform = `rotate(${legSway.toFixed(2)}deg)`;
-            rightLegRef.current.style.transform = `rotate(${(-legSway).toFixed(2)}deg)`;
-          }
         }
       }
 
@@ -331,6 +315,7 @@ export default function AndroidBackdrop() {
 
     return () => {
       cancelAnimationFrame(rafId);
+      window.removeEventListener('mascot-dance-toggle', handleDanceToggle);
       window.removeEventListener('mousemove', handlePointerMove);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
@@ -346,7 +331,7 @@ export default function AndroidBackdrop() {
     >
       {/* Subtle technical background grid */}
       <div 
-        className="absolute inset-0 opacity-[0.4] bg-[radial-gradient(#E2E8F0_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" 
+        className="absolute inset-0 opacity-[0.35] bg-[radial-gradient(#E2E8F0_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" 
       />
 
       {/* Decorative ambient tint glow behind hero */}
@@ -357,208 +342,38 @@ export default function AndroidBackdrop() {
       {/* Persistent Animated Android Mascot visual (positioned via translate3d from top-left (0,0)) */}
       <div
         ref={mascotWrapperRef}
-        className="absolute top-0 left-0 w-[240px] sm:w-[320px] md:w-[360px] lg:w-[400px] will-change-transform"
+        className="absolute top-0 left-0 w-[200px] sm:w-[260px] md:w-[300px] lg:w-[340px] will-change-transform"
         style={{
           transform: 'translate3d(70vw, 16vh, 0) scale(1.05)',
-          opacity: 0.3,
+          opacity: 0.32,
         }}
       >
-        <svg
-          viewBox="0 0 320 380"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-auto drop-shadow-sm"
-        >
-          <defs>
-            {/* Soft Android Green Gradient */}
-            <linearGradient id="androidGreenGrad" x1="80" y1="40" x2="240" y2="340" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#3DDC84" stopOpacity="0.85" />
-              <stop offset="60%" stopColor="#34A853" stopOpacity="0.95" />
-              <stop offset="100%" stopColor="#137333" stopOpacity="0.9" />
-            </linearGradient>
+        <div className="relative w-full h-auto flex items-center justify-center">
+          {/* Subtle tech halo rings behind the character */}
+          <svg
+            viewBox="0 0 340 420"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute inset-0 w-full h-full pointer-events-none -z-10"
+          >
+            <circle cx="170" cy="210" r="150" stroke="#137333" strokeWidth="1" strokeDasharray="4 6" strokeOpacity="0.25" />
+            <circle cx="170" cy="210" r="180" stroke="#34A853" strokeWidth="0.75" strokeOpacity="0.15" />
+            <circle cx="170" cy="210" r="115" stroke="#1DB954" strokeWidth="0.5" strokeDasharray="3 4" strokeOpacity="0.18" />
+          </svg>
 
-            {/* Subtle inner grid pattern */}
-            <pattern id="mascotGrid" width="16" height="16" patternUnits="userSpaceOnUse">
-              <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#137333" strokeWidth="0.5" strokeOpacity="0.12" />
-            </pattern>
-          </defs>
-
-          {/* Decorative halo rings behind mascot */}
-          <circle cx="160" cy="180" r="145" stroke="#137333" strokeWidth="1" strokeDasharray="4 6" strokeOpacity="0.25" />
-          <circle cx="160" cy="180" r="170" stroke="#34A853" strokeWidth="0.75" strokeOpacity="0.15" />
-
-          {/* Android mascot elements */}
-          <g id="mascot-full">
-            {/* HEAD with Antennae and Eyes */}
-            <g
-              ref={headRef}
-              id="mascot-head"
-              style={{ transformOrigin: '160px 115px' }}
-            >
-              {/* Antennae */}
-              <line
-                x1="112"
-                y1="62"
-                x2="92"
-                y2="24"
-                stroke="url(#androidGreenGrad)"
-                strokeWidth="7"
-                strokeLinecap="round"
-              />
-              <line
-                x1="208"
-                y1="62"
-                x2="228"
-                y2="24"
-                stroke="url(#androidGreenGrad)"
-                strokeWidth="7"
-                strokeLinecap="round"
-              />
-
-              {/* Dome */}
-              <path
-                d="M 80,115 A 80,80 0 0,1 240,115 Z"
-                fill="url(#androidGreenGrad)"
-                stroke="#137333"
-                strokeWidth="1.5"
-                strokeOpacity="0.5"
-              />
-              {/* Head subtle tech grid overlay */}
-              <path
-                d="M 80,115 A 80,80 0 0,1 240,115 Z"
-                fill="url(#mascotGrid)"
-              />
-
-              {/* Eyes (authentic light cutout look) */}
-              <circle cx="124" cy="78" r="7.5" fill="#FAFAF9" />
-              <circle cx="196" cy="78" r="7.5" fill="#FAFAF9" />
-            </g>
-
-            {/* BODY */}
-            <g id="mascot-body">
-              <path
-                d="M 80,126 L 240,126 L 240,242 A 22,22 0 0,1 218,264 L 102,264 A 22,22 0 0,1 80,242 Z"
-                fill="url(#androidGreenGrad)"
-                stroke="#137333"
-                strokeWidth="1.5"
-                strokeOpacity="0.5"
-              />
-              <path
-                d="M 80,126 L 240,126 L 240,242 A 22,22 0 0,1 218,264 L 102,264 A 22,22 0 0,1 80,242 Z"
-                fill="url(#mascotGrid)"
-              />
-
-              {/* Decorative circuit line on chest (distinctive developer touch) */}
-              <path
-                d="M 120,165 L 145,165 L 160,180 L 195,180"
-                stroke="#FAFAF9"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeOpacity="0.6"
-              />
-              <circle cx="120" cy="165" r="3" fill="#FAFAF9" fillOpacity="0.9" />
-              <circle cx="195" cy="180" r="3" fill="#FAFAF9" fillOpacity="0.9" />
-            </g>
-
-            {/* LEFT ARM */}
-            <g
-              ref={leftArmRef}
-              id="mascot-left-arm"
-              style={{ transformOrigin: '56px 138px' }}
-            >
-              <rect
-                x="44"
-                y="126"
-                width="24"
-                height="102"
-                rx="12"
-                fill="url(#androidGreenGrad)"
-                stroke="#137333"
-                strokeWidth="1.5"
-                strokeOpacity="0.4"
-              />
-            </g>
-
-            {/* RIGHT ARM */}
-            <g
-              ref={rightArmRef}
-              id="mascot-right-arm"
-              style={{ transformOrigin: '264px 138px' }}
-            >
-              <rect
-                x="252"
-                y="126"
-                width="24"
-                height="102"
-                rx="12"
-                fill="url(#androidGreenGrad)"
-                stroke="#137333"
-                strokeWidth="1.5"
-                strokeOpacity="0.4"
-              />
-            </g>
-
-            {/* LEFT LEG */}
-            <g
-              ref={leftLegRef}
-              id="mascot-left-leg"
-              style={{ transformOrigin: '124px 266px' }}
-            >
-              <rect
-                x="112"
-                y="266"
-                width="24"
-                height="64"
-                rx="12"
-                fill="url(#androidGreenGrad)"
-                stroke="#137333"
-                strokeWidth="1.5"
-                strokeOpacity="0.4"
-              />
-            </g>
-
-            {/* RIGHT LEG */}
-            <g
-              ref={rightLegRef}
-              id="mascot-right-leg"
-              style={{ transformOrigin: '196px 266px' }}
-            >
-              <rect
-                x="184"
-                y="266"
-                width="24"
-                height="64"
-                rx="12"
-                fill="url(#androidGreenGrad)"
-                stroke="#137333"
-                strokeWidth="1.5"
-                strokeOpacity="0.4"
-              />
-            </g>
-          </g>
-
-          {/* Floating Android & Jetpack developer badge accents */}
-          <g opacity="0.45">
-            {/* Kotlin Diamond Accent */}
-            <path
-              d="M 40,70 L 60,50 L 60,70 Z"
-              fill="#137333"
-              opacity="0.3"
+          {/* Vaibhav's Android Mascot (isolated from Androidify video) */}
+          <div className="relative z-10 w-full">
+            <Image
+              src={isDancing ? '/mascot-dance.webp' : '/mascot-idle.webp'}
+              alt="Vaibhav's Android Mascot"
+              width={320}
+              height={412}
+              className="w-full h-auto drop-shadow-md select-none pointer-events-none transition-opacity duration-300"
+              priority
+              unoptimized={isDancing}
             />
-            {/* Compose bracket ornament */}
-            <text
-              x="260"
-              y="70"
-              fill="#137333"
-              fontSize="20"
-              fontFamily="monospace"
-              fontWeight="bold"
-              opacity="0.35"
-            >
-              &lt;/&gt;
-            </text>
-          </g>
-        </svg>
+          </div>
+        </div>
       </div>
     </div>
   );
