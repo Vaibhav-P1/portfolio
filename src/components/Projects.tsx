@@ -11,7 +11,7 @@ type Project = {
   status: 'Live' | 'Beta' | 'Completed' | 'Archived';
   statusColor: string;
   placeholderText: string;
-  placeholderGlow: string;
+  accentColor: string;
   githubUrl: string;
 };
 
@@ -30,7 +30,7 @@ const projects: Project[] = [
     status: 'Completed',
     statusColor: 'chip-green',
     placeholderText: 'FOCUS_SESSION_ACTIVE',
-    placeholderGlow: 'from-emerald-900/25',
+    accentColor: '#137333',
     githubUrl: 'https://github.com/Vaibhav-P1/Zenith',
   },
   {
@@ -47,7 +47,7 @@ const projects: Project[] = [
     status: 'Completed',
     statusColor: 'chip-green',
     placeholderText: 'PAYMENT_GATEWAY_READY',
-    placeholderGlow: 'from-purple-900/25',
+    accentColor: '#1A73E8',
     githubUrl: 'https://github.com/Vaibhav-P1/Shopp---An-Ecom-App',
   },
   {
@@ -64,8 +64,8 @@ const projects: Project[] = [
     tags: ['Kotlin', 'Jetpack Compose', 'SpeechRecognizer', 'FusedLocation', 'AccessibilityService'],
     status: 'Completed',
     statusColor: 'chip-green',
-    placeholderText: 'SOS_ACTIVE',
-    placeholderGlow: 'from-red-900/25',
+    placeholderText: 'SOS_STANDBY_ACTIVE',
+    accentColor: '#D93025',
     githubUrl: 'https://github.com/Vaibhav-P1/Rakshak-AI',
   },
   {
@@ -82,7 +82,7 @@ const projects: Project[] = [
     status: 'Completed',
     statusColor: 'chip-green',
     placeholderText: 'WEATHER_STREAM_ACTIVE',
-    placeholderGlow: 'from-blue-900/25',
+    accentColor: '#0288D1',
     githubUrl: 'https://github.com/Vaibhav-P1/WeatherApp',
   },
   {
@@ -98,53 +98,89 @@ const projects: Project[] = [
     tags: ['Kotlin', 'Jetpack Compose', 'Firebase Auth', 'Realtime DB'],
     status: 'Completed',
     statusColor: 'chip-green',
-    placeholderText: 'FIREBASE_CONNECTED',
-    placeholderGlow: 'from-orange-900/25',
+    placeholderText: 'FIREBASE_CHAT_READY',
+    accentColor: '#E65100',
     githubUrl: 'https://github.com/Vaibhav-P1/Whisp-Chatroom',
   },
 ];
 
-function PhoneMockup({ placeholderText, glow }: { placeholderText: string; glow: string }) {
+function AndroidDeviceMockup({ placeholderText, accentColor }: { placeholderText: string; accentColor: string }) {
   return (
-    <div className="relative max-w-[240px] mx-auto">
-      {/* Phone shell */}
-      <div className="relative bg-[#111] rounded-[2.5rem] border-2 border-white/10 overflow-hidden shadow-2xl aspect-[9/19]">
-        {/* Notch */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-16 h-3 bg-black rounded-full z-10" />
-        {/* Screen content */}
-        <div className={`absolute inset-0 bg-gradient-to-b ${glow} via-[#0d0d0d] to-[#0d0d0d]`}>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <p className="text-white/20 font-mono text-[9px] tracking-widest text-center px-4">
-              {placeholderText}
-            </p>
-          </div>
-          {/* Fake status bar */}
-          <div className="absolute top-0 left-0 right-0 h-12 flex items-end justify-between px-5 pb-1">
-            <span className="text-white/20 text-[8px] font-mono">9:41</span>
-            <div className="flex gap-1">
-              <div className="w-2 h-1 bg-white/20 rounded-sm" />
-              <div className="w-1 h-1 bg-white/20 rounded-sm" />
-              <div className="w-1.5 h-1 bg-[#3DDC84]/40 rounded-sm" />
+    <div className="relative max-w-[240px] mx-auto select-none">
+      {/* Device Shell - Modern Pixel / Android style */}
+      <div className="relative bg-zinc-950 rounded-[2.8rem] border-[4px] border-zinc-800/90 shadow-2xl overflow-hidden aspect-[9/19]">
+        {/* Android Punch Hole Camera */}
+        <div className="absolute top-3 left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-black rounded-full z-20 ring-1 ring-zinc-800 flex items-center justify-center">
+          <div className="w-1 h-1 bg-zinc-900 rounded-full" />
+        </div>
+
+        {/* Screen Content Area */}
+        <div className="absolute inset-0 bg-[#0F1115] flex flex-col justify-between pt-2 pb-3 px-3">
+          {/* Android Status Bar */}
+          <div className="h-8 flex items-center justify-between px-3 text-[9px] font-mono text-zinc-400 z-10">
+            <span>9:41</span>
+            <div className="flex items-center gap-1.5">
+              {/* Wi-Fi & 5G Indicators */}
+              <span className="text-[8px] font-bold text-zinc-400">5G</span>
+              <div className="w-2.5 h-2 border border-zinc-400 rounded-xs relative overflow-hidden">
+                <div className="h-full bg-[#3DDC84] w-3/4" />
+              </div>
             </div>
           </div>
-          {/* Fake app UI skeleton */}
-          <div className="absolute top-16 left-4 right-4 space-y-2">
-            <div className="h-2 bg-white/5 rounded-full w-1/2" />
-            <div className="h-16 bg-white/[0.03] rounded-xl border border-white/5" />
-            <div className="h-16 bg-white/[0.03] rounded-xl border border-white/5" />
-            <div className="h-2 bg-white/5 rounded-full w-3/4 mt-3" />
-            <div className="h-8 bg-[#3DDC84]/10 rounded-xl border border-[#3DDC84]/10" />
+
+          {/* App UI Wireframe / Preview */}
+          <div className="flex-1 flex flex-col justify-between py-2 px-1">
+            {/* Top App Bar */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="h-2.5 bg-zinc-700/60 rounded-full w-1/3" />
+                <div className="w-4 h-4 rounded-full bg-zinc-800" />
+              </div>
+
+              {/* Compose Card 1 */}
+              <div className="p-3 bg-zinc-900/90 border border-zinc-800/80 rounded-xl space-y-2 shadow-xs">
+                <div className="flex items-center justify-between">
+                  <div className="h-2 bg-zinc-700 rounded-full w-1/2" />
+                  <div
+                    className="w-2 h-2 rounded-full"
+                    style={{ backgroundColor: accentColor }}
+                  />
+                </div>
+                <div className="h-1.5 bg-zinc-800 rounded-full w-4/5" />
+                <div className="h-1.5 bg-zinc-800 rounded-full w-2/3" />
+              </div>
+
+              {/* Compose Card 2 */}
+              <div className="p-3 bg-zinc-900/90 border border-zinc-800/80 rounded-xl space-y-2 shadow-xs">
+                <div className="h-2 bg-zinc-700 rounded-full w-2/5" />
+                <div className="h-7 rounded-lg bg-zinc-800/60 flex items-center justify-center">
+                  <span className="text-[8px] font-mono text-zinc-500 tracking-wider">
+                    {placeholderText}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Jetpack Compose FAB or Action */}
+            <div className="flex justify-end pr-2 pb-1">
+              <div
+                className="w-9 h-9 rounded-2xl flex items-center justify-center shadow-lg"
+                style={{ backgroundColor: accentColor }}
+              >
+                <span className="text-white text-xs font-bold">+</span>
+              </div>
+            </div>
           </div>
-          {/* Nav bar */}
-          <div className="absolute bottom-4 left-4 right-4 h-10 bg-white/[0.03] rounded-2xl border border-white/5 flex items-center justify-around px-4">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className={`w-4 h-4 rounded-full ${i === 0 ? 'bg-[#3DDC84]/40' : 'bg-white/10'}`} />
-            ))}
+
+          {/* Android Gesture Navigation Bar */}
+          <div className="pt-1">
+            <div className="w-20 h-1 bg-zinc-500/60 rounded-full mx-auto" />
           </div>
         </div>
       </div>
-      {/* Phone glow */}
-      <div className="absolute inset-0 rounded-[2.5rem] blur-2xl opacity-20 bg-[#3DDC84] -z-10" />
+
+      {/* Subtle refined shadow */}
+      <div className="absolute inset-x-4 -bottom-4 h-8 bg-zinc-900/10 blur-xl -z-10 rounded-full" />
     </div>
   );
 }
@@ -153,12 +189,11 @@ export default function Projects() {
   return (
     <section id="projects" className="py-28 px-6 md:px-12 max-w-7xl mx-auto">
       <div className="mb-16">
-        <p className="text-[#3DDC84] text-xs font-semibold tracking-[0.3em] uppercase mb-4">/ Projects</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight">
-          Things I&apos;ve{' '}
-          <span className="gradient-text">shipped.</span>
+        <p className="text-[#137333] text-xs font-semibold tracking-[0.25em] uppercase mb-4">/ Projects</p>
+        <h2 className="text-4xl md:text-5xl font-bold text-zinc-900 leading-tight tracking-tight">
+          Things I&apos;ve <span className="text-[#137333]">shipped.</span>
         </h2>
-        <p className="text-white/50 mt-4 max-w-xl text-base leading-relaxed">
+        <p className="text-zinc-600 mt-4 max-w-xl text-base leading-relaxed font-normal">
           Production-ready Android applications showcasing clean architecture, modern Jetpack libraries, and real-world API integrations.
         </p>
       </div>
@@ -166,40 +201,46 @@ export default function Projects() {
       <div className="space-y-24">
         {projects.map((p, i) => (
           <div key={p.index} className="relative group">
-            {/* Large background number — sits behind the phone mockup, opposite to text */}
-            <div className={`hidden lg:block absolute -top-10 text-[10rem] font-black text-white/[0.025] leading-none pointer-events-none select-none group-hover:text-white/[0.04] transition-all duration-700 ${
-              i % 2 !== 0 ? '-left-4' : 'right-0'
-            }`}>
+            {/* Large background number — sits behind as a subtle editorial watermark */}
+            <div
+              className={`hidden lg:block absolute -top-8 text-[9rem] font-black text-zinc-200/50 leading-none pointer-events-none select-none ${
+                i % 2 !== 0 ? '-left-4' : 'right-0'
+              }`}
+            >
               {p.index}
             </div>
 
             <div className={`relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
               {/* Text block */}
               <div className={`${i % 2 !== 0 ? 'lg:col-start-7 lg:col-span-6' : 'lg:col-span-6'} flex flex-col justify-center`}>
-                <div className="flex items-center gap-3 mb-5">
+                <div className="flex items-center gap-3 mb-4">
                   <span className={`chip ${p.statusColor}`}>
-                    <span className={`w-1.5 h-1.5 rounded-full ${p.status === 'Completed' ? 'bg-[#3DDC84]' : p.status === 'Archived' ? 'bg-white/30' : 'bg-blue-400'}`} />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#137333]" />
                     {p.status}
                   </span>
-                  <span className="text-white/30 text-xs font-mono">{p.subtitle}</span>
+                  <span className="text-zinc-500 text-xs font-mono font-medium">{p.subtitle}</span>
                 </div>
 
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">{p.title}</h3>
-                <p className="text-white/55 text-base leading-relaxed mb-6">{p.description}</p>
+                <h3 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-3 tracking-tight">{p.title}</h3>
+                <p className="text-zinc-600 text-base leading-relaxed mb-6 font-normal">{p.description}</p>
 
                 {/* Achievements */}
-                <ul className="space-y-2 mb-8">
+                <ul className="space-y-2.5 mb-8">
                   {p.achievements.map((a, j) => (
-                    <li key={j} className="flex gap-3 text-white/50 text-sm leading-relaxed">
-                      <span className="text-[#3DDC84] shrink-0 mt-0.5">▸</span>
-                      {a}
+                    <li key={j} className="flex gap-3 text-zinc-700 text-sm leading-relaxed">
+                      <span className="text-[#137333] font-bold shrink-0 mt-0.5">▸</span>
+                      <span>{a}</span>
                     </li>
                   ))}
                 </ul>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-8">
-                  {p.tags.map((t) => <span key={t} className="chip">{t}</span>)}
+                  {p.tags.map((t) => (
+                    <span key={t} className="chip bg-zinc-100 text-zinc-700 border-zinc-200">
+                      {t}
+                    </span>
+                  ))}
                 </div>
 
                 {/* GitHub link */}
@@ -207,16 +248,16 @@ export default function Projects() {
                   href={p.githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl glass-card text-sm font-semibold text-white/70 hover:text-white hover:glow-green transition-all duration-200 w-max"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-zinc-300 text-sm font-semibold text-zinc-800 hover:bg-zinc-50 hover:border-zinc-400 transition-all duration-200 shadow-2xs w-max"
                 >
                   <FaGithub size={16} /> View on GitHub
                 </a>
               </div>
 
-              {/* Phone mockup */}
-              <div className={`${i % 2 !== 0 ? 'lg:col-start-1 lg:col-span-5' : 'lg:col-start-8 lg:col-span-5'} flex items-center justify-center py-8`}>
+              {/* Android Phone mockup */}
+              <div className={`${i % 2 !== 0 ? 'lg:col-start-1 lg:col-span-5' : 'lg:col-start-8 lg:col-span-5'} flex items-center justify-center py-6`}>
                 <div className="animate-float">
-                  <PhoneMockup placeholderText={p.placeholderText} glow={p.placeholderGlow} />
+                  <AndroidDeviceMockup placeholderText={p.placeholderText} accentColor={p.accentColor} />
                 </div>
               </div>
             </div>
@@ -226,4 +267,3 @@ export default function Projects() {
     </section>
   );
 }
-

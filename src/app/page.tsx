@@ -6,10 +6,14 @@ import Projects from '@/components/Projects';
 import Experience from '@/components/Experience';
 import Education from '@/components/Education';
 import Contact from '@/components/Contact';
+import AndroidBackdrop from '@/components/AndroidBackdrop';
 
 export default function Home() {
   return (
-    <main className="bg-[#0a0a0a] min-h-screen text-[#f5f5f5] antialiased overflow-x-hidden">
+    <main className="bg-[#FAFAF9] min-h-screen text-[#111827] antialiased overflow-x-hidden relative">
+      {/* Decorative Android Backdrop Mascot behind all content */}
+      <AndroidBackdrop />
+
       <Navbar />
       <Hero />
 
@@ -25,10 +29,10 @@ export default function Home() {
         <Education />
         <Contact />
 
-        <footer className="py-10 text-center text-white/20 text-xs border-t border-white/[0.06] tracking-widest uppercase font-medium">
+        <footer className="py-12 text-center text-zinc-500 text-xs border-t border-zinc-200/80 tracking-wider uppercase font-medium">
           <p>
-            Built with Next.js & Tailwind CSS ·{' '}
-            <span className="text-[#3DDC84]">©{new Date().getFullYear()}</span> Vaibhav Pandey
+            Built with Next.js &amp; Tailwind CSS ·{' '}
+            <span className="text-[#137333] font-semibold">©{new Date().getFullYear()}</span> Vaibhav Pandey
           </p>
         </footer>
       </div>
